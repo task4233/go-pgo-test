@@ -1,0 +1,25 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/task4233/pgo-test/load
+BenchmarkLoad-8   	   13593	     84770 ns/op
+BenchmarkLoad-8   	   14166	     88466 ns/op
+BenchmarkLoad-8   	   13749	     86441 ns/op
+BenchmarkLoad-8   	   14407	     85644 ns/op
+BenchmarkLoad-8   	   14461	     82575 ns/op
+BenchmarkLoad-8   	   14552	     82335 ns/op
+BenchmarkLoad-8   	   14592	     82557 ns/op
+BenchmarkLoad-8   	   14592	     82752 ns/op
+BenchmarkLoad-8   	   14432	     82264 ns/op
+BenchmarkLoad-8   	   14620	     82439 ns/op
+BenchmarkLoad-8   	   13473	     86210 ns/op
+BenchmarkLoad-8   	   14324	     86718 ns/op
+BenchmarkLoad-8   	   13140	     83298 ns/op
+BenchmarkLoad-8   	   14548	     83723 ns/op
+BenchmarkLoad-8   	   14456	     82925 ns/op
+BenchmarkLoad-8   	   14478	     83431 ns/op
+BenchmarkLoad-8   	   14157	     83000 ns/op
+BenchmarkLoad-8   	   14074	     83670 ns/op
+BenchmarkLoad-8   	   13615	     82495 ns/op
+BenchmarkLoad-8   	   14319	     84130 ns/op
+PASS
+ok  	github.com/task4233/pgo-test/load	40.772s
