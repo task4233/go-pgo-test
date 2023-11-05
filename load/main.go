@@ -9,12 +9,13 @@ import (
 	"math"
 	"net/http"
 	"os"
+	"time"
 
 	_ "net/http/pprof"
 )
 
 var (
-	source = flag.String("source", "./assets/icon.png", "path to png image file to upload")
+	source = flag.String("source", "./load/icon.jpeg", "path to png image file to upload")
 	addr   = flag.String("addr", "http://localhost:8080", "address of server")
 
 	count = flag.Int("count", math.MaxInt, "Number of requests to send")
@@ -40,10 +41,13 @@ func generateLoad(count int) error {
 		if err != nil {
 			return fmt.Errorf("failed http.Post: %w", err)
 		}
+
 		if _, err := io.Copy(io.Discard, resp.Body); err != nil {
 			return fmt.Errorf("failed io.Copy: %w", err)
 		}
 		resp.Body.Close()
+
+		time.Sleep(time.Millisecond)
 	}
 
 	return nil

@@ -1,0 +1,63 @@
+Type: cpu
+Time: Nov 6, 2023 at 6:30am (JST)
+Duration: 424.58s, Total samples = 55.10s (12.98%)
+Showing nodes accounting for 52.75s, 95.74% of 55.10s total
+Dropped 276 nodes (cum <= 0.28s)
+      flat  flat%   sum%        cum   cum%
+    17.26s 31.32% 31.32%     17.27s 31.34%  runtime.kevent
+    17.22s 31.25% 62.58%     17.25s 31.31%  syscall.syscall
+    10.91s 19.80% 82.38%     10.91s 19.80%  runtime.pthread_cond_signal
+     5.54s 10.05% 92.43%      5.54s 10.05%  runtime.pthread_cond_wait
+     0.62s  1.13% 93.56%      0.62s  1.13%  runtime.usleep
+     0.38s  0.69% 94.25%      0.57s  1.03%  runtime.scanobject
+     0.33s   0.6% 94.85%      0.33s   0.6%  runtime.pthread_kill
+     0.12s  0.22% 95.06%     17.41s 31.60%  runtime.netpoll (partial-inline)
+     0.09s  0.16% 95.23%      0.62s  1.13%  runtime.stealWork (inline)
+     0.08s  0.15% 95.37%     23.99s 43.54%  runtime.findRunnable
+     0.04s 0.073% 95.44%      0.53s  0.96%  net/http.(*conn).readRequest
+     0.03s 0.054% 95.50%      1.12s  2.03%  runtime.gcDrain
+     0.03s 0.054% 95.55%      0.28s  0.51%  runtime.mallocgc
+     0.02s 0.036% 95.59%      0.43s  0.78%  net/http.(*connReader).backgroundRead
+     0.02s 0.036% 95.63%      0.42s  0.76%  runtime.runqsteal
+     0.02s 0.036% 95.66%     25.36s 46.03%  runtime.schedule
+     0.01s 0.018% 95.68%      7.93s 14.39%  net.(*conn).Read
+     0.01s 0.018% 95.70%      0.40s  0.73%  runtime.runqgrab (inline)
+     0.01s 0.018% 95.72%     11.05s 20.05%  runtime.semawakeup
+     0.01s 0.018% 95.74%      9.19s 16.68%  runtime.wakep
+         0     0% 95.74%      7.57s 13.74%  bufio.(*Reader).Peek
+         0     0% 95.74%      7.57s 13.74%  bufio.(*Reader).fill (inline)
+         0     0% 95.74%      9.47s 17.19%  bufio.(*Writer).Flush
+         0     0% 95.74%      7.90s 14.34%  internal/poll.(*FD).Read
+         0     0% 95.74%      9.37s 17.01%  internal/poll.(*FD).Write
+         0     0% 95.74%     17.26s 31.32%  internal/poll.ignoringEINTRIO (inline)
+         0     0% 95.74%      9.37s 17.01%  net.(*conn).Write
+         0     0% 95.74%      7.90s 14.34%  net.(*netFD).Read
+         0     0% 95.74%      9.37s 17.01%  net.(*netFD).Write
+         0     0% 95.74%     17.85s 32.40%  net/http.(*conn).serve
+         0     0% 95.74%      7.57s 13.74%  net/http.(*connReader).Read
+         0     0% 95.74%      9.51s 17.26%  net/http.(*response).finishRequest (inline)
+         0     0% 95.74%      9.37s 17.01%  net/http.checkConnErrorWriter.Write
+         0     0% 95.74%      0.35s  0.64%  net/http.readRequest
+         0     0% 95.74%      0.29s  0.53%  runtime.(*gcControllerState).enlistWorker
+         0     0% 95.74%      0.29s  0.53%  runtime.(*gcWork).balance
+         0     0% 95.74%      1.81s  3.28%  runtime.entersyscall_sysmon
+         0     0% 95.74%      0.77s  1.40%  runtime.gcBgMarkWorker
+         0     0% 95.74%      1.12s  2.03%  runtime.gcBgMarkWorker.func2
+         0     0% 95.74%      5.54s 10.05%  runtime.mPark (inline)
+         0     0% 95.74%     25.36s 46.03%  runtime.mcall
+         0     0% 95.74%      7.80s 14.16%  runtime.newproc.func1
+         0     0% 95.74%      5.54s 10.05%  runtime.notesleep
+         0     0% 95.74%     11.02s 20.00%  runtime.notewakeup
+         0     0% 95.74%     25.33s 45.97%  runtime.park_m
+         0     0% 95.74%      0.33s   0.6%  runtime.preemptM
+         0     0% 95.74%      0.29s  0.53%  runtime.preemptone
+         0     0% 95.74%      1.34s  2.43%  runtime.resetspinning
+         0     0% 95.74%      5.79s 10.51%  runtime.semasleep
+         0     0% 95.74%      0.33s   0.6%  runtime.signalM (inline)
+         0     0% 95.74%      9.15s 16.61%  runtime.startm
+         0     0% 95.74%      5.61s 10.18%  runtime.stopm
+         0     0% 95.74%     11.52s 20.91%  runtime.systemstack
+         0     0% 95.74%      7.88s 14.30%  syscall.Read (inline)
+         0     0% 95.74%      9.37s 17.01%  syscall.Write (inline)
+         0     0% 95.74%      7.88s 14.30%  syscall.read
+         0     0% 95.74%      9.37s 17.01%  syscall.write

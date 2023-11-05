@@ -1,0 +1,68 @@
+Type: cpu
+Time: Nov 6, 2023 at 6:37am (JST)
+Duration: 419.48s, Total samples = 53.96s (12.86%)
+Showing nodes accounting for 51.86s, 96.11% of 53.96s total
+Dropped 268 nodes (cum <= 0.27s)
+      flat  flat%   sum%        cum   cum%
+    17.08s 31.65% 31.65%     17.08s 31.65%  runtime.kevent
+    16.72s 30.99% 62.64%     16.76s 31.06%  syscall.syscall
+    10.87s 20.14% 82.78%     10.87s 20.14%  runtime.pthread_cond_signal
+     5.40s 10.01% 92.79%      5.40s 10.01%  runtime.pthread_cond_wait
+     0.83s  1.54% 94.33%      0.83s  1.54%  runtime.usleep
+     0.32s  0.59% 94.92%      0.32s  0.59%  runtime.pthread_kill
+     0.24s  0.44% 95.37%      0.45s  0.83%  runtime.scanobject (inline)
+     0.16s   0.3% 95.66%      0.81s  1.50%  runtime.stealWork (inline)
+     0.04s 0.074% 95.74%     17.16s 31.80%  runtime.netpoll (partial-inline)
+     0.04s 0.074% 95.81%     25.04s 46.40%  runtime.schedule
+     0.03s 0.056% 95.87%      0.32s  0.59%  runtime.lock2
+     0.03s 0.056% 95.92%      0.35s  0.65%  runtime.mallocgc
+     0.02s 0.037% 95.96%      0.45s  0.83%  net/http.(*conn).readRequest
+     0.02s 0.037% 96.00%      5.63s 10.43%  runtime.semasleep
+     0.01s 0.019% 96.02%     23.60s 43.74%  runtime.findRunnable
+     0.01s 0.019% 96.03%      1.02s  1.89%  runtime.gcDrain
+     0.01s 0.019% 96.05%      5.45s 10.10%  runtime.mPark (inline)
+     0.01s 0.019% 96.07%     25.05s 46.42%  runtime.park_m
+     0.01s 0.019% 96.09%      0.56s  1.04%  runtime.runqsteal
+     0.01s 0.019% 96.11%      9.76s 18.09%  syscall.write
+         0     0% 96.11%      6.81s 12.62%  bufio.(*Reader).Peek
+         0     0% 96.11%      6.81s 12.62%  bufio.(*Reader).fill
+         0     0% 96.11%      9.81s 18.18%  bufio.(*Writer).Flush
+         0     0% 96.11%      7.06s 13.08%  internal/poll.(*FD).Read
+         0     0% 96.11%      9.77s 18.11%  internal/poll.(*FD).Write
+         0     0% 96.11%     16.79s 31.12%  internal/poll.ignoringEINTRIO (inline)
+         0     0% 96.11%      7.08s 13.12%  net.(*conn).Read
+         0     0% 96.11%      9.77s 18.11%  net.(*conn).Write
+         0     0% 96.11%      7.06s 13.08%  net.(*netFD).Read
+         0     0% 96.11%      9.77s 18.11%  net.(*netFD).Write
+         0     0% 96.11%     17.39s 32.23%  net/http.(*conn).serve
+         0     0% 96.11%      6.81s 12.62%  net/http.(*connReader).Read
+         0     0% 96.11%      0.31s  0.57%  net/http.(*connReader).backgroundRead
+         0     0% 96.11%      9.86s 18.27%  net/http.(*response).finishRequest (inline)
+         0     0% 96.11%      9.77s 18.11%  net/http.checkConnErrorWriter.Write
+         0     0% 96.11%      0.30s  0.56%  runtime.(*gcControllerState).enlistWorker
+         0     0% 96.11%      0.31s  0.57%  runtime.(*gcWork).balance
+         0     0% 96.11%      1.79s  3.32%  runtime.entersyscall_sysmon
+         0     0% 96.11%      0.64s  1.19%  runtime.gcBgMarkWorker
+         0     0% 96.11%      1.02s  1.89%  runtime.gcBgMarkWorker.func2
+         0     0% 96.11%      0.30s  0.56%  runtime.lock (partial-inline)
+         0     0% 96.11%      0.32s  0.59%  runtime.lockWithRank (inline)
+         0     0% 96.11%     25.07s 46.46%  runtime.mcall
+         0     0% 96.11%      0.31s  0.57%  runtime.newobject
+         0     0% 96.11%      7.61s 14.10%  runtime.newproc.func1
+         0     0% 96.11%      5.44s 10.08%  runtime.notesleep
+         0     0% 96.11%     10.88s 20.16%  runtime.notewakeup
+         0     0% 96.11%      0.28s  0.52%  runtime.osyield (inline)
+         0     0% 96.11%      0.32s  0.59%  runtime.preemptM
+         0     0% 96.11%      0.31s  0.57%  runtime.preemptone
+         0     0% 96.11%      1.39s  2.58%  runtime.resetspinning
+         0     0% 96.11%      0.55s  1.02%  runtime.runqgrab (inline)
+         0     0% 96.11%     10.91s 20.22%  runtime.semawakeup
+         0     0% 96.11%      0.32s  0.59%  runtime.signalM (inline)
+         0     0% 96.11%      0.28s  0.52%  runtime.startTheWorldWithSema
+         0     0% 96.11%      8.98s 16.64%  runtime.startm
+         0     0% 96.11%      5.51s 10.21%  runtime.stopm
+         0     0% 96.11%     11.31s 20.96%  runtime.systemstack
+         0     0% 96.11%         9s 16.68%  runtime.wakep
+         0     0% 96.11%      7.01s 12.99%  syscall.Read (inline)
+         0     0% 96.11%      9.76s 18.09%  syscall.Write (inline)
+         0     0% 96.11%      7.01s 12.99%  syscall.read

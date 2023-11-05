@@ -4,6 +4,8 @@ import (
 	"errors"
 	"io"
 	"strings"
+
+	"github.com/task4233/pgo-test/domain/repository"
 )
 
 const PathPrefix = "/convert/"
@@ -12,12 +14,8 @@ var (
 	ErrDecode = errors.New("failed to decode")
 	ErrEncode = errors.New("failed to encode")
 
-	_ Converter = (*NopConverter)(nil)
+	_ repository.Converter = (*NopConverter)(nil)
 )
-
-type Converter interface {
-	Convert(dst io.Writer, src io.Reader) error
-}
 
 // NopConverter has no effect.
 type NopConverter struct{}
@@ -27,10 +25,12 @@ func (c *NopConverter) Convert(dst io.Writer, src io.Reader) error {
 	return err
 }
 
-func GetConverter(urlPathStr string) Converter {
+func GetConverter(urlPathStr string) repository.Converter {
 	switch strings.TrimPrefix(strings.ToLower(urlPathStr), PathPrefix) {
 	case "png":
 		return &PngConverter{}
+	case "gif":
+		return &GifConverter{}
 	default:
 		return &NopConverter{}
 	}

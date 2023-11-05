@@ -1,0 +1,65 @@
+Type: cpu
+Time: Nov 6, 2023 at 6:45am (JST)
+Duration: 426.01s, Total samples = 53.73s (12.61%)
+Showing nodes accounting for 51.38s, 95.63% of 53.73s total
+Dropped 300 nodes (cum <= 0.27s)
+      flat  flat%   sum%        cum   cum%
+    17.18s 31.97% 31.97%     17.21s 32.03%  syscall.syscall
+    16.54s 30.78% 62.76%     16.58s 30.86%  runtime.kevent
+    11.06s 20.58% 83.34%     11.06s 20.58%  runtime.pthread_cond_signal
+     4.91s  9.14% 92.48%      4.92s  9.16%  runtime.pthread_cond_wait
+     0.40s  0.74% 93.23%      0.40s  0.74%  runtime.usleep
+     0.33s  0.61% 93.84%      0.57s  1.06%  runtime.scanobject (inline)
+     0.27s   0.5% 94.34%      0.27s   0.5%  runtime.pthread_cond_timedwait_relative_np
+     0.16s   0.3% 94.64%     16.78s 31.23%  runtime.netpoll (partial-inline)
+     0.12s  0.22% 94.86%      0.58s  1.08%  runtime.stealWork (inline)
+     0.07s  0.13% 94.99%      0.29s  0.54%  runtime.mallocgc
+     0.06s  0.11% 95.11%     22.50s 41.88%  runtime.findRunnable
+     0.04s 0.074% 95.18%      0.28s  0.52%  net/textproto.readMIMEHeader
+     0.04s 0.074% 95.25%      0.29s  0.54%  runtime.markroot
+     0.04s 0.074% 95.33%      0.32s   0.6%  runtime.runqgrab (inline)
+     0.02s 0.037% 95.37%      0.66s  1.23%  net/http.(*conn).readRequest
+     0.02s 0.037% 95.40%      0.44s  0.82%  net/http.readRequest
+     0.02s 0.037% 95.44%      0.34s  0.63%  runtime.runqsteal
+     0.01s 0.019% 95.46%      7.10s 13.21%  bufio.(*Reader).Peek
+     0.01s 0.019% 95.48%     17.23s 32.07%  internal/poll.ignoringEINTRIO (inline)
+     0.01s 0.019% 95.50%      7.52s 14.00%  net.(*netFD).Read
+     0.01s 0.019% 95.51%      0.47s  0.87%  net/http.(*connReader).backgroundRead
+     0.01s 0.019% 95.53%      1.80s  3.35%  runtime.entersyscall_sysmon
+     0.01s 0.019% 95.55%         1s  1.86%  runtime.gcDrain
+     0.01s 0.019% 95.57%     23.90s 44.48%  runtime.schedule (inline)
+     0.01s 0.019% 95.59%      4.95s  9.21%  runtime.stopm
+     0.01s 0.019% 95.61%      9.21s 17.14%  runtime.wakep
+     0.01s 0.019% 95.63%      7.47s 13.90%  syscall.read
+         0     0% 95.63%      7.09s 13.20%  bufio.(*Reader).fill
+         0     0% 95.63%      9.86s 18.35%  bufio.(*Writer).Flush
+         0     0% 95.63%      7.51s 13.98%  internal/poll.(*FD).Read
+         0     0% 95.63%      9.75s 18.15%  internal/poll.(*FD).Write
+         0     0% 95.63%      7.54s 14.03%  net.(*conn).Read
+         0     0% 95.63%      9.75s 18.15%  net.(*conn).Write
+         0     0% 95.63%      9.75s 18.15%  net.(*netFD).Write
+         0     0% 95.63%     17.95s 33.41%  net/http.(*conn).serve
+         0     0% 95.63%      7.09s 13.20%  net/http.(*connReader).Read
+         0     0% 95.63%      9.93s 18.48%  net/http.(*response).finishRequest
+         0     0% 95.63%      9.75s 18.15%  net/http.checkConnErrorWriter.Write
+         0     0% 95.63%      0.28s  0.52%  net/textproto.(*Reader).ReadMIMEHeader (inline)
+         0     0% 95.63%      0.27s   0.5%  runtime.forEachP
+         0     0% 95.63%      0.80s  1.49%  runtime.gcBgMarkWorker
+         0     0% 95.63%         1s  1.86%  runtime.gcBgMarkWorker.func2
+         0     0% 95.63%      4.93s  9.18%  runtime.mPark (inline)
+         0     0% 95.63%     23.92s 44.52%  runtime.mcall
+         0     0% 95.63%      7.81s 14.54%  runtime.newproc.func1
+         0     0% 95.63%      4.93s  9.18%  runtime.notesleep
+         0     0% 95.63%      0.27s   0.5%  runtime.notetsleep
+         0     0% 95.63%      0.27s   0.5%  runtime.notetsleep_internal
+         0     0% 95.63%     11.07s 20.60%  runtime.notewakeup
+         0     0% 95.63%     23.90s 44.48%  runtime.park_m
+         0     0% 95.63%      1.36s  2.53%  runtime.resetspinning
+         0     0% 95.63%      5.21s  9.70%  runtime.semasleep (partial-inline)
+         0     0% 95.63%     11.14s 20.73%  runtime.semawakeup
+         0     0% 95.63%      0.28s  0.52%  runtime.startTheWorldWithSema
+         0     0% 95.63%      9.19s 17.10%  runtime.startm
+         0     0% 95.63%     11.46s 21.33%  runtime.systemstack
+         0     0% 95.63%      7.47s 13.90%  syscall.Read (inline)
+         0     0% 95.63%      9.75s 18.15%  syscall.Write (inline)
+         0     0% 95.63%      9.75s 18.15%  syscall.write

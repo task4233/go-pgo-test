@@ -28,7 +28,7 @@ func convertHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// ready cpu profile
-	f, err := os.Create("profiles/cpu.pprof")
+	f, err := os.Create("profile/cpu.pprof")
 	if err != nil {
 		log.Printf("failed to create: %v", err)
 		os.Exit(1)
@@ -43,7 +43,7 @@ func main() {
 		pprof.StopCPUProfile()
 		f.Close()
 
-		f, err := os.Create("profiles/heap.pprof")
+		f, err := os.Create("profile/heap.pprof")
 		if err != nil {
 			panic(err)
 		}
