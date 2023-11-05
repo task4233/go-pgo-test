@@ -1,52 +1,64 @@
 package main
 
 import (
-	"bytes"
-	"io"
+	"errors"
 	"log"
 	"net/http"
-
 	_ "net/http/pprof"
+	"os"
+	"runtime"
+	"runtime/pprof"
 
-	"gitlab.com/golang-commonmark/markdown"
+	"github.com/task4233/pgo-test/converter"
 )
 
-func render(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		http.Error(w, "Only POST allowed", http.StatusMethodNotAllowed)
-		return
-	}
+func convertHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/octet-stream")
 
-	src, err := io.ReadAll(r.Body)
-	if err != nil {
-		log.Printf("error reading body: %v", err)
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-		return
-	}
-
-	md := markdown.New(
-		markdown.XHTMLOutput(true),
-		markdown.Typographer(true),
-		markdown.Linkify(true),
-		markdown.Tables(true),
-	)
-
-	var buf bytes.Buffer
-	if err := md.Render(&buf, src); err != nil {
-		log.Printf("error converting markdown: %v", err)
-		http.Error(w, "Malformed markdown", http.StatusBadRequest)
-		return
-	}
-
-	if _, err := io.Copy(w, &buf); err != nil {
-		log.Printf("error writing response: %v", err)
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-		return
+	c := converter.GetConverter(r.URL.Path)
+	if err := c.Convert(w, r.Body); err != nil {
+		if errors.Is(err, converter.ErrDecode) {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		r.Body.Close()
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
 
 func main() {
-	http.HandleFunc("/render", render)
+	// ready cpu profile
+	f, err := os.Create("profiles/cpu.pprof")
+	if err != nil {
+		log.Printf("failed to create: %v", err)
+		os.Exit(1)
+	}
+	if err := pprof.StartCPUProfile(f); err != nil {
+		log.Printf("failed to create: %v", err)
+		os.Exit(1)
+	}
+
+	// finish profiling on giving /quit request
+	http.HandleFunc("/quit", func(w http.ResponseWriter, r *http.Request) {
+		pprof.StopCPUProfile()
+		f.Close()
+
+		f, err := os.Create("profiles/heap.pprof")
+		if err != nil {
+			panic(err)
+		}
+		runtime.GC()
+		if err := pprof.WriteHeapProfile(f); err != nil {
+			panic(err)
+		}
+		f.Close()
+
+		os.Exit(0)
+	})
+
+	// register /convert endpoint
+	http.HandleFunc(converter.PathPrefix, convertHandler)
+
 	log.Printf("Serving on port 8080...")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
