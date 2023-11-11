@@ -3,19 +3,19 @@ package converter
 import (
 	"image"
 	"image/draw"
+	"image/gif"
 	"image/jpeg"
-	"image/png"
 	"io"
 
-	"github.com/task4233/pgo-test/domain/repository"
+	"github.com/task4233/pgo-test/internal/domain/repository"
 	xdraw "golang.org/x/image/draw"
 )
 
 var _ repository.Converter = (*PngConverter)(nil)
 
-type PngConverter struct{}
+type GifConverter struct{}
 
-func (c *PngConverter) Convert(dst io.Writer, src io.Reader) error {
+func (c *GifConverter) Convert(dst io.Writer, src io.Reader) error {
 	// decode the data
 	// assume the given data extension is jpeg
 	imgData, err := jpeg.Decode(src)
@@ -29,7 +29,7 @@ func (c *PngConverter) Convert(dst io.Writer, src io.Reader) error {
 	xdraw.CatmullRom.Scale(imgDst, imgDst.Bounds(), imgData, imgSrc, draw.Over, nil)
 
 	// encode to png
-	err = png.Encode(dst, imgDst)
+	err = gif.Encode(dst, imgDst, nil)
 	if err != nil {
 		return ErrEncode
 	}

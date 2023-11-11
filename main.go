@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"runtime/pprof"
 
-	"github.com/task4233/pgo-test/converter"
+	"github.com/task4233/pgo-test/internal/converter"
 )
 
 func convertHandler(w http.ResponseWriter, r *http.Request) {

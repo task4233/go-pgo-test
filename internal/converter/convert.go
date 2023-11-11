@@ -5,7 +5,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/task4233/pgo-test/domain/repository"
+	"github.com/task4233/pgo-test/internal/domain/repository"
 )
 
 const PathPrefix = "/convert/"
